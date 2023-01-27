@@ -1,5 +1,6 @@
 package com.linkedin.javacodechallenges;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -14,7 +15,11 @@ public class App {
             Map.entry('Z', 10));
 
     public static int wordScoreCalculator(String word) {
-        return 0;
+        int score = 0;
+        for (char letter : word.toUpperCase().toCharArray()){
+            score += letterPoints.containsKey(letter) ? letterPoints.get(letter) : 0;
+        }
+        return score;
     }
 
     public static void main(String[] args) {
