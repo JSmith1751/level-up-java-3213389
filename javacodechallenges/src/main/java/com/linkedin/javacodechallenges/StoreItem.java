@@ -16,8 +16,16 @@ public class StoreItem {
   double discount;
 
   public static Optional<StoreItem> findLeastExpensive(Collection<StoreItem> items) {
-    // TODO: Implement
-    return Optional.empty();
+    if (items.isEmpty()) return Optional.empty();
+    StoreItem currentLeast = null;
+    for (StoreItem s : items) {
+      if ((currentLeast == null)
+          || ((currentLeast.getRetailPrice() * (1 - currentLeast.getDiscount())) > (s.getRetailPrice()
+              * (1 - s.getDiscount())))) {
+        currentLeast = s;
+      }
+    }
+    return Optional.of(currentLeast);
   }
 
   @Override
